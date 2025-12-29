@@ -55,7 +55,7 @@ jobs:
               working-directory: ./doc
               run: pnpm run build
               env:
-                  BASE_PATH: /
+                  BASE_PATH: /ack-nestjs-boilerplate
                   NODE_ENV: production
 
             - name: Upload artifact
