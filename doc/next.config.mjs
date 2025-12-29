@@ -4,7 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
-    // output: 'export',
+    output: 'export', // Should be commented out when developing locally
     images: {
         unoptimized: true,
     },
