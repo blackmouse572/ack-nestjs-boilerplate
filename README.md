@@ -83,6 +83,7 @@ This boilerplate is perfect for:
 - [x] Add TOTP Authentication Protected to reset password, change password, and regenerate backup codes endpoints
 - [x] Add import and export endpoint with presign upload
 - [ ] Add migration script to migrate AWS S3 Policy for public and private, include config for presign expiration
+- [ ] Add documentation for fumadocs site
 
 ### Next Features
 
