@@ -58,13 +58,10 @@ jobs:
                   BASE_PATH: /
                   NODE_ENV: production
 
-            - name: Create public directory and add .nojekyll file
-              run: mkdir -p ./doc/public && touch ./doc/public/.nojekyll
-
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: ./doc/public
+                  path: ./doc/out
 
     deploy:
         environment:
