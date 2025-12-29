@@ -5,7 +5,13 @@ import { Root } from 'fumadocs-core/page-tree';
 
 export default function Layout({ children }: LayoutProps<'/docs'>) {
     return (
-        <DocsLayout tree={source.pageTree} {...baseOptions()}>
+        <DocsLayout
+            tree={source.pageTree}
+            searchToggle={{
+                enabled: false,
+            }}
+            {...baseOptions()}
+        >
             {children}
         </DocsLayout>
     );
