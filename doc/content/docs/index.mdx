@@ -1,0 +1,147 @@
+---
+title: Getting Started
+description: Welcome to the ACK NestJS Boilerplate documentation! This is a production-ready NestJS v11.x boilerplate designed for enterprise backend services with comprehensive authentication, authorization, and modern development practices.
+icon: Album
+---
+
+import { Download, Lock, Shield, Database, Settings, Book } from 'lucide-react';
+
+## Overview
+
+ACK NestJS Boilerplate provides a solid foundation for building scalable and maintainable backend applications with:
+
+- 🔐 **Complete Authentication System** - JWT, OAuth, social login, and 2FA
+- 🛡️ **Advanced Authorization** - RBAC with CASL, policy management, and fine-grained permissions
+- 💾 **Flexible Database Layer** - Prisma ORM with multi-database support
+- ⚡ **Performance Optimized** - Redis caching, queue processing, and optimized queries
+- 📝 **Developer Friendly** - TypeScript, comprehensive testing, and detailed documentation
+
+## Quick Links
+
+<Cards>
+    <Card
+        title="Installation Guide"
+        href="/docs/installation"
+        icon={<Download className="text-blue-500" />}
+    />
+    <Card
+        title="Authentication"
+        href="/docs/auth/authentication"
+        icon={<Lock className="text-blue-500" />}
+    />
+    <Card
+        title="Authorization"
+        href="/docs/auth/authorization"
+        icon={<Shield className="text-blue-500" />}
+    />
+    <Card
+        title="Database Setup"
+        href="/docs/database"
+        icon={<Database className="text-blue-500" />}
+    />
+    <Card
+        title="Configuration"
+        href="/docs/configuration"
+        icon={<Settings className="text-blue-500" />}
+    />
+    <Card
+        title="API Documentation"
+        href="/docs/doc"
+        icon={<Book className="text-blue-500" />}
+    />
+</Cards>
+
+## Key Features
+
+### Authentication & Security
+
+- JWT-based authentication with refresh tokens
+- Social login (Google, Apple)
+- Two-factor authentication (2FA/TOTP)
+- API key authentication
+- Session management with Redis
+- Password policies and encryption
+
+### Authorization & Access Control
+
+- Role-based access control (RBAC)
+- Policy-based authorization with CASL
+- User, role, and permission management
+- Term & policy acceptance tracking
+- Fine-grained access control
+
+### Database & Storage
+
+- Prisma ORM with TypeScript
+- Multi-database support (MongoDB, PostgreSQL, MySQL)
+- AWS S3 integration for file storage
+- Presigned URL generation
+- Database migrations and seeding
+
+### Development Experience
+
+- TypeScript strict mode
+- Comprehensive testing (unit, integration, e2e)
+- Swagger/OpenAPI documentation
+- Docker and docker-compose support
+- Hot reload in development
+- Code formatting and linting
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/andrechristikan/ack-nestjs-boilerplate
+
+# Install dependencies
+pnpm install
+
+# Setup environment
+cp .env.example .env
+
+# Run with Docker
+docker-compose up -d
+
+# Access API documentation
+open http://localhost:3000/docs
+```
+
+For detailed installation instructions, see the [Installation Guide](/installation).
+
+## Architecture
+
+The boilerplate follows best practices and design patterns:
+
+- **Repository Pattern** - Clean data access abstraction
+- **SOLID Principles** - Maintainable and testable code
+- **Modular Architecture** - Feature-based organization
+- **12-Factor App** - Cloud-native configuration
+- **Domain-Driven Design** - Business logic separation
+
+## Documentation Structure
+
+| Section                                | Description                            |
+| -------------------------------------- | -------------------------------------- |
+| [Installation](/docs/installation)     | Setup guide for development and Docker |
+| [Authentication](/docs/authentication) | JWT, OAuth, and session management     |
+| [Authorization](/docs/authorization)   | RBAC, policies, and permissions        |
+| [Database](/docs/database)             | Prisma setup and migrations            |
+| [Configuration](/docs/configuration)   | Environment and app configuration      |
+| [API Development](/docs/doc)           | Request/response handling              |
+| [File Upload](/docs/file-upload)       | AWS S3 integration                     |
+| [Caching](/docs/cache)                 | Redis caching strategies               |
+| [Queue](/docs/queue)                   | BullMQ job processing                  |
+| [Logging](/docs/logger)                | Pino logger setup                      |
+| [Testing](/docs/request-validation)    | Testing best practices                 |
+
+## Support
+
+If you find this project helpful:
+
+- ⭐ Star the repository on [GitHub](https://github.com/andrechristikan/ack-nestjs-boilerplate)
+- 📝 Report issues or suggest features
+- 🤝 Contribute to the project
+
+## License
+
+This project is licensed under the MIT License.

@@ -1,0 +1,14 @@
+{
+    "root": true,
+    "pages": [
+        "---Introduction---",
+        "index",
+        "installation",
+        "project-structure",
+        "---Documentation---",
+        "auth",
+        "logging",
+        "request-response",
+        "..."
+    ]
+}

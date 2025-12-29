@@ -45,6 +45,7 @@ This boilerplate is perfect for:
     - [Integrations & Monitoring](#integrations--monitoring)
     - [Testing & Documentation](#testing--documentation)
     - [Architecture Highlights](#architecture-highlights)
+  - [Documentation](#documentation)
   - [Quick Start](#quick-start)
   - [Change DB with Minimal Effort](#change-db-with-minimal-effort)
   - [Installation](#installation)
@@ -216,6 +217,45 @@ Comprehensive testing framework and documentation.
 - **Modular Structure** - Component-based folder organization
 - **12-Factor App** - Cloud-native best practices
 - **Production Ready** - Enterprise-grade security and scalability
+
+## Documentation
+
+📚 **Full documentation is available at: [https://andrechristikan.github.io/ack-nestjs-boilerplate/](https://andrechristikan.github.io/ack-nestjs-boilerplate/)**
+
+### Local Documentation Development
+
+You can also run the documentation site locally:
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run documentation in development mode
+pnpm docs:dev
+
+# Build documentation
+pnpm docs:build
+
+# Preview production build
+pnpm docs:preview
+```
+
+The documentation site is built with [Fumadocs](https://fumadocs.vercel.app/) and [Waku](https://waku.gg/), and automatically deployed to GitHub Pages when changes are pushed to the main branch.
+
+### Documentation Coverage
+
+Our comprehensive documentation includes:
+
+- 📖 **Installation & Setup** - Step-by-step installation guides (standard and Docker)
+- 🔐 **Authentication** - JWT, OAuth, social login, and 2FA implementation
+- 🛡️ **Authorization** - RBAC with CASL and policy management
+- 💾 **Database** - Prisma setup, migrations, and multi-database support
+- 📝 **API Development** - Request validation, error handling, and response formatting
+- ⚡ **Performance** - Caching strategies and optimization techniques
+- 🔧 **Configuration** - Environment setup and feature flags
+- 📊 **Logging & Monitoring** - Pino logger and Sentry integration
+- 🎯 **Testing** - Unit, integration, and e2e testing patterns
+- 🚀 **Deployment** - Docker, AWS, and production best practices
 
 ## Quick Start
 
