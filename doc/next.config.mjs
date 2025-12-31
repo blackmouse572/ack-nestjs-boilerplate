@@ -4,7 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
-    output: 'export', // Should be commented out when developing locally
+    // output: 'export', // Should be commented out when developing locally
     basePath: process.env.BASE_PATH || '',
     assetPrefix: process.env.BASE_PATH || '',
     images: {
