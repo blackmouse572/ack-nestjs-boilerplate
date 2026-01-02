@@ -3,7 +3,7 @@ title: Installation Guide
 description: Step-by-step instructions for setting up ACK NestJS Boilerplate on your development environment
 ---
 
-import { Download, Docker, Database, Settings, CheckCircle } from 'lucide-react';
+import { Download, Docker, Database, Settings, CheckCircle, BookOpen, Cog } from 'lucide-react';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 
 # Installation Documentation
@@ -14,40 +14,136 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
   ACK NestJS Boilerplate can be installed and configured in minutes using Docker or manual setup with Node.js, MongoDB, and Redis dependencies.
 </Callout>
 
-## Overview
-
 This document provides step-by-step instructions for setting up the ACK NestJS Boilerplate on your development environment.
 
 ## Related Documents
 
-- [Environment Documentation][ref-doc-environment] - For complete environment variable configuration
-- [Database Documentation][ref-doc-database] - For database setup and migration details
-- [Configuration Documentation][ref-doc-configuration] - For understanding configuration structure
+<Cards>
+    <Card type="link" href="/docs/environment" icon={<Settings />}>
+        Environment Documentation - Complete environment variable configuration
+    </Card>
+
+    <Card type="link" href="/docs/database" icon={<Database />}>
+        Database Documentation - Database setup and migration details
+    </Card>
+
+    <Card type="link" href="/docs/configuration" icon={<Cog />}>
+        Configuration Documentation - Understanding configuration structure
+    </Card>
+</Cards>
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Related Documents](#related-documents)
-- [Prerequisites](#prerequisites)
-  - [Required Tools](#required-tools)
-- [Clone Repository](#clone-repository)
-- [🔧 Standard Installation](#-standard-installation)
-  - [Install Packages](#install-packages)
-  - [Create Environment](#create-environment)
-  - [Generate Keys](#generate-keys)
-- [🐳 Installation with Docker](#-installation-with-docker)
-  - [What's Included](#whats-included)
-  - [Prerequisites](#prerequisites-1)
-  - [Create Environment](#create-environment-1)
-  - [Generate Keys](#generate-keys-1)
-  - [Run Containers](#run-containers)
-  - [Troubleshooting](#troubleshooting)
-- [Generate Database Client](#generate-database-client)
-- [Database Migration & Seeding](#database-migration--seeding)
-- [Run Project](#run-project)
-- [Development Tools](#development-tools)
-- [Accessing the Application](#accessing-the-application)
-
+<InlineTOC
+    defaultOpen={true}
+    items={[
+        {
+            title: 'Overview',
+            url: '#overview',
+            depth: 2,
+        },
+        {
+            title: 'Related Documents',
+            url: '#related-documents',
+            depth: 2,
+        },
+        {
+            title: 'Prerequisites',
+            url: '#prerequisites',
+            depth: 2,
+        },
+        {
+            title: 'Required Tools',
+            url: '#required-tools',
+            depth: 3,
+        },
+        {
+            title: 'Clone Repository',
+            url: '#clone-repository',
+            depth: 2,
+        },
+        {
+            title: 'Standard Installation',
+            url: '#-standard-installation',
+            depth: 2,
+        },
+        {
+            title: 'Install Packages',
+            url: '#install-packages',
+            depth: 3,
+        },
+        {
+            title: 'Create Environment',
+            url: '#create-environment',
+            depth: 3,
+        },
+        {
+            title: 'Generate Keys',
+            url: '#generate-keys',
+            depth: 3,
+        },
+        {
+            title: 'Installation with Docker',
+            url: '#-installation-with-docker',
+            depth: 2,
+        },
+        {
+            title: 'What\'s Included',
+            url: '#whats-included',
+            depth: 3,
+        },
+        {
+            title: 'Prerequisites',
+            url: '#prerequisites-1',
+            depth: 3,
+        },
+        {
+            title: 'Docker-Specific Configuration',
+            url: '#docker-specific-configuration',
+            depth: 3,
+        },
+        {
+            title: 'Generate Keys',
+            url: '#generate-keys-1',
+            depth: 3,
+        },
+        {
+            title: 'Run Containers',
+            url: '#run-containers',
+            depth: 3,
+        },
+        {
+            title: 'Troubleshooting',
+            url: '#troubleshooting',
+            depth: 3,
+        },
+        {
+            title: 'Generate Database Client',
+            url: '#generate-database-client',
+            depth: 2,
+        },
+        {
+            title: 'Database Migration & Seeding',
+            url: '#database-migration--seeding',
+            depth: 2,
+        },
+        {
+            title: 'Run Project',
+            url: '#run-project',
+            depth: 2,
+        },
+        {
+            title: 'Development Tools',
+            url: '#development-tools',
+            depth: 2,
+        },
+        {
+            title: 'Accessing the Application',
+            url: '#accessing-the-application',
+            depth: 2,
+        },
+    ]}
+/>
 
 ## Prerequisites
 
@@ -71,7 +167,7 @@ Before starting, install the following tools and packages. We recommend using th
 
 Clone the project repository from GitHub:
 
-```bash
+```bash title="Clone the repository"
 # Clone the repository
 git clone https://github.com/andrechristikan/ack-nestjs-boilerplate.git
 
@@ -90,7 +186,7 @@ Standard installation assumes all dependencies are installed correctly and avail
 
 This step will install all the required Node.js packages and dependencies for the project.
 
-```bash
+```bash title="Install dependencies"
 # Install all dependencies
 pnpm install
 ```
@@ -99,7 +195,7 @@ pnpm install
 
 The environment file contains all configuration settings for your application including database connections, JWT settings, and external service configurations.
 
-```bash
+```bash title="Copy environment file"
 # Copy the example environment file
 cp .env.example .env
 ```
@@ -114,7 +210,7 @@ ACK NestJS Boilerplate uses **ES256** algorithm for Access Tokens and **ES512** 
 
 > ⚠️ **Security Warning**: Always backup your existing keys before regenerating. There is no way to rollback once new keys are generated and old tokens will become invalid.
 
-```bash
+```bash title="Generate JWT key pairs"
 # Generate keys and JWKS files
 pnpm generate:keys
 
@@ -142,7 +238,7 @@ Upload the files to any publicly accessible URL and note the URLs for your `.env
 
 After hosting your JWKS files, update your `.env` file:
 
-```bash
+```bash title="Update JWKS URLs in .env"
 # Update with your actual JWKS URLs
 AUTH_JWT_ACCESS_TOKEN_JWKS_URI="https://your-domain.com/.well-known/access-jwks.json"
 AUTH_JWT_REFRESH_TOKEN_JWKS_URI="https://your-domain.com/.well-known/refresh-jwks.json"
@@ -178,7 +274,7 @@ Ensure you have Docker and Docker Compose installed on your system:
 
 The environment setup for Docker installation is the same as the standard installation, but with Docker-specific configurations.
 
-```bash
+```bash title="Copy environment file for Docker"
 # Copy the example environment file
 cp .env.example .env
 ```
@@ -190,20 +286,20 @@ cp .env.example .env
 For Docker installation, ensure these specific values in your `.env` file:
 
 **Database Configuration:**
-```bash
+```bash title="Docker MongoDB configuration"
 # MongoDB (Docker containers)
 DATABASE_URL=mongodb://localhost:27017/ACKNestJs?retryWrites=true&w=majority&replicaSet=rs0
 ```
 
 **Redis Configuration:**
-```bash
+```bash title="Docker Redis configuration"
 # Redis (Docker containers)
 CACHE_REDIS_URL=redis://localhost:6379/0
 QUEUE_REDIS_URL=redis://localhost:6379/1
 ```
 
 **JWKS Configuration (Docker-hosted):**
-```bash
+```bash title="Docker JWKS URLs"
 # JWKS server URLs (hosted by Docker container)
 AUTH_JWT_ACCESS_TOKEN_JWKS_URI=http://localhost:3011/.well-known/access-jwks.json
 AUTH_JWT_REFRESH_TOKEN_JWKS_URI=http://localhost:3011/.well-known/refresh-jwks.json
@@ -219,7 +315,7 @@ Key generation for Docker installation follows the same process as standard inst
 
 > ⚠️ **Security Warning**: Always backup your existing keys before regenerating. There is no way to rollback once new keys are generated and old tokens will become invalid.
 
-```bash
+```bash title="Generate keys for Docker"
 # Generate keys and automatically update .env with key IDs (recommended for Docker)
 pnpm generate:keys --direct-insert
 ```
@@ -246,13 +342,13 @@ Now you're ready to start the complete Docker environment with all services.
 > **Note**: By default, Docker installation only sets up dependencies (MongoDB, Redis, JWKS server, BullMQ dashboard). The API container is not included. To also run the API container, use the `full` profile.
 
 **Start only dependencies:**
-```bash
+```bash title="Start Docker dependencies"
 # Start MongoDB, Redis, JWKS, and BullMQ dashboard
 docker-compose up -d
 ```
 
 **Start with API container (recommended for full development setup):**
-```bash
+```bash title="Start Docker with API container"
 # Start all services including the API container
 docker-compose up -d
 ```
@@ -267,7 +363,7 @@ docker-compose up -d
 
 You can monitor the services as they start up:
 
-```bash
+```bash title="Monitor Docker containers"
 # Check status of all containers
 docker-compose ps
 
@@ -291,19 +387,19 @@ The Docker setup includes comprehensive health checks for all services, ensuring
 Prisma uses a generated client to provide type-safe database access and query building. You must generate the Prisma Client every time you change your Prisma schema (in `prisma/schema.prisma`).
 
 **Generate database client from Prisma Schema:**
-```bash
+```bash title="Generate Prisma client"
 pnpm db:generate
 ```
 
 ## Database Migration & Seeding
 
 **Migrate schema to MongoDB:**
-```bash
+```bash title="Migrate database schema"
 pnpm db:migrate
 ```
 
 **Seed all initial data:**
-```bash
+```bash title="Seed all initial data"
 pnpm migration:seed
 ```
 
@@ -311,7 +407,7 @@ pnpm migration:seed
 
 Use this to seed email data for testing email sending features.
 
-```bash
+```bash title="Seed email templates"
 pnpm migration template-email --type seed
 ```
 
@@ -319,7 +415,7 @@ pnpm migration template-email --type seed
 
 Use this to seed term policies data.
 
-```bash
+```bash title="Seed term policies"
 pnpm migration template-termPolicy --type seed
 ```
 
@@ -330,14 +426,14 @@ For a complete guide and module details, see [Database Documentation][ref-doc-da
 
 Congratulations! You're now ready to start the project. Make sure all your services (MongoDB, Redis) are running before starting the application.
 
-```bash
+```bash title="Start development server"
 # Start in development mode with hot reload
 pnpm start:dev
 ```
 
-Production Commands
+**Production Commands**
 
-```bash
+```bash title="Build and run production"
 # Build the project for production
 pnpm build
 
@@ -349,7 +445,7 @@ pnpm start:prod
 
 These commands help maintain code quality during development:
 
-```bash
+```bash title="Code formatting and linting"
 # Format code with Prettier
 pnpm format
 
@@ -371,7 +467,7 @@ pnpm spell
 
 Here are useful commands for managing your dependencies:
 
-```bash
+```bash title="Dependency management"
 # Check for outdated packages
 pnpm package:check
 
@@ -448,59 +544,3 @@ To verify everything is working correctly:
 [ref-ack-forks]: https://github.com/andrechristikan/ack-nestjs-boilerplate/network/members
 [ref-ack-contributors]: https://github.com/andrechristikan/ack-nestjs-boilerplate/graphs/contributors
 [ref-ack-license]: LICENSE.md
-
-{/* THIRD PARTY */}
-
-[ref-nestjs]: http://nestjs.com
-[ref-nestjs-swagger]: https://docs.nestjs.com/openapi/introduction
-[ref-nestjs-swagger-types]: https://docs.nestjs.com/openapi/types-and-parameters
-[ref-prisma]: https://www.prisma.io
-[ref-prisma-mongodb]: https://www.prisma.io/docs/orm/overview/databases/mongodb#commonalities-with-other-database-provider
-[ref-prisma-setup]: https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project#switching-databases
-[ref-mongodb]: https://docs.mongodb.com/
-[ref-redis]: https://redis.io
-[ref-bullmq]: https://bullmq.io
-[ref-nodejs]: https://nodejs.org/
-[ref-typescript]: https://www.typescriptlang.org/
-[ref-docker]: https://docs.docker.com
-[ref-dockercompose]: https://docs.docker.com/compose/
-[ref-pnpm]: https://pnpm.io
-[ref-12factor]: https://12factor.net
-[ref-commander]: https://nest-commander.jaymcdoniel.dev
-[ref-package-json]: package.json
-[ref-jwt]: https://jwt.io
-[ref-jest]: https://jestjs.io/docs/getting-started
-[ref-git]: https://git-scm.com
-[ref-google-console]: https://console.cloud.google.com/
-[ref-google-client-secret]: https://developers.google.com/identity/protocols/oauth2
-
-[ref-doc-root]: ../readme.md
-[ref-doc-activity-log]: activity-log.md
-[ref-doc-authentication]: authentication.md
-[ref-doc-authorization]: authorization.md
-[ref-doc-cache]: cache.md
-[ref-doc-configuration]: configuration.md
-[ref-doc-database]: database.md
-[ref-doc-environment]: environment.md
-[ref-doc-feature-flag]: feature-flag.md
-[ref-doc-file-upload]: file-upload.md
-[ref-doc-handling-error]: handling-error.md
-[ref-doc-installation]: installation.md
-[ref-doc-logger]: logger.md
-[ref-doc-message]: message.md
-[ref-doc-pagination]: pagination.md
-[ref-doc-project-structure]: project-structure.md
-[ref-doc-queue]: queue.md
-[ref-doc-request-validation]: request-validation.md
-[ref-doc-response]: response.md
-[ref-doc-security-and-middleware]: security-and-middleware.md
-[ref-doc-doc]: doc.md
-[ref-doc-third-party-integration]: third-party-integration.md
-[ref-doc-presign]: presign.md
-[ref-doc-term-policy]: term-policy.md
-[ref-doc-two-factor]: two-factor.md
-
-{/* CONTRIBUTOR */}
-
-[ref-contributor-gzerox]: https://github.com/Gzerox
-[ref-contributor-ak2g]: https://github.com/ak2g
